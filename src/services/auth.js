@@ -6,7 +6,16 @@ import { FIFTEEN_MINUTES, ONE_DAY } from '../constans/index.js';
 import { SessionsCollection } from '../db/models/session.js';
 
 export const registerUser = async (payload) => {
-    const encryptedPassword = await bcrypt.hash(payload.password, 10);
+  const encryptedPassword = await bcrypt.hash(payload.password, 10);
+
+  const user = await UsersCollection.findOne({ email: payload.email });
+
+  if (user) {
+    throw createHttpError(
+      409,
+      'User with this email already exist in database',
+    );
+  }
 
     return await UsersCollection.create({
         ...payload,

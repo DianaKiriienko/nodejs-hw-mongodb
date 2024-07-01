@@ -17,18 +17,18 @@ const router = Router();
 
 router.use('/', authenticate);
 
-router.use('/contacts/:contactId', isValidId('contactId'));
+router.use('/:contactId', isValidId('contactId'));
 
-router.get('/contacts', ctrlWrapper(getContactsController) );
+router.get('/', ctrlWrapper(getContactsController) );
 
-router.get('/contacts/:contactId', ctrlWrapper(getContactsByIdController));
+router.get('/:contactId', ctrlWrapper(getContactsByIdController));
 
-router.post('/contacts', validateBody(creaContactSchema), ctrlWrapper(createContactController));
+router.post('/', validateBody(creaContactSchema), ctrlWrapper(createContactController));
 
-router.delete('/contacts/:contactId', ctrlWrapper(deleteContactController));
+router.delete('/:contactId', ctrlWrapper(deleteContactController));
 
-router.put('/contacts/:contactId', validateBody(creaContactSchema), ctrlWrapper(updateContactController));
+router.put('/:contactId', validateBody(creaContactSchema), ctrlWrapper(updateContactController));
 
-router.patch('/contacts/:contactId',validateBody(updateContactSchema), ctrlWrapper(patchContactController));
+router.patch('/:contactId',validateBody(updateContactSchema), ctrlWrapper(patchContactController));
 
  export default router;
