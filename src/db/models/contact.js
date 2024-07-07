@@ -25,7 +25,7 @@ const contactsSchema = new Schema(
             type: String,
             enum: ['work', 'home', 'personal'],
             default: 'personal',
-            required: true
+            // required: true
         },
         createdAt: {
             type: Date,
@@ -38,7 +38,7 @@ const contactsSchema = new Schema(
         userId: {
             type: Schema.Types.ObjectId,
             ref: 'User',
-            required: true,
+            // required: true,
         },
     }, {
     timestamps: true,
